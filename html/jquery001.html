@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery 简介</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">jQuery 语法</h1>
+		</header>
+
+		<div class="mui-content">
+			<h2>This is a heading</h2>
+			<p class="test0">This is a paragraph.</p>
+			<p id="test1">This is another paragraph.</p>
+			<button id="button1" type="button" class="mui-btn mui-btn-blue">隐藏当前的 HTML 元素</button><br /><p></p>
+			<button id="button2" type="button" class="mui-btn mui-btn-blue">隐藏 id="test" 的元素</button><br /><p></p>
+			<button id="button3" type="button" class="mui-btn mui-btn-blue">隐藏所有 p元素</button><br /><p></p>
+			<button id="button4" type="button" class="mui-btn mui-btn-blue">隐藏所有 class="test" 的元素</button><br /><p></p>
+			<button id="button5" type="button" class="mui-btn mui-btn-blue">把所有 p 元素的背景颜色更改为红色</button><br /><p></p>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#button1").click(function() {
+					$(this).hide("fast", function(){
+						mui.toast("快速消失!");
+					});
+					//speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+					//callback 参数是 toggle() 方法完成后所执行的函数名称
+				});
+				$("#button2").click(function() {
+					$("#test1").toggle(1000);
+				});
+				$("#button3").click(function() {
+					$("p").hide(1000);
+				});
+				$("#button4").click(function() {
+					$(".test0").toggle();
+				});
+				$("#button5").click(function(){
+					$("P").css("background-color", "red");
+				});
+			});
+		</script>
+	</body>
+
+</html>

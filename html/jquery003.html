@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery 效果 - 滑动</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
+		<style type="text/css">
+			div.panel,
+			p.flip {
+				margin: 0px;
+				padding: 5px;
+				text-align: center;
+				background: #e5eecc;
+				border: solid 1px #c3c3c3;
+			}
+			
+			div.panel {
+				height: 120px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">jQuery 效果 - 滑动</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="panel">
+				<p>W3School - 领先的 Web 技术教程站点</p>
+				<p>在 W3School，你可以找到你所需要的所有网站建设教程。</p>
+			</div>
+
+			<p id="p1" class="flip">向下滑动元素</p>
+			<p id="p2" class="flip">向上滑动元素</p>
+			<p id="p3" class="flip">滑动元素</p>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#p1").click(function() {
+					$(".panel").slideDown();
+				});
+				$("#p2").click(function() {
+					$(".panel").slideUp();
+				});
+				$("#p3").click(function() {
+					$(".panel").slideToggle("slow", function() {
+						mui.toast("滑动元素完毕");
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

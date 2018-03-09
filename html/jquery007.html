@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery - 获得内容和属性</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">jQuery - 获得内容和属性</h1>
+		</header>
+
+		<div class="mui-content">
+			<p id="test">这是段落中的<b>粗体</b>文本。</p>
+			<p>姓名：<input type="text" value="米老鼠">
+				<a href="http://www.w3school.com.cn">W3School.com.cn</a>
+			</p>
+			<button id="button1" type="button" class="mui-btn mui-btn-blue">显示文本</button>
+			<p></p>
+			<button id="button2" type="button" class="mui-btn mui-btn-blue">显示 HTML</button>
+			<p></p>
+			<button id="button3" type="button" class="mui-btn mui-btn-blue">显示值</button>
+			<p></p>
+			<button id="button4" type="button" class="mui-btn mui-btn-blue">显示 href 值</button>
+			<p>jQuery - 设置内容和属性</p>
+			<p id="test1">这是<b>粗体</b>文本。</p>
+			<p id="test2">这是另一段<b>粗体</b>文本。</p>
+			<p>
+				<a href="http://www.w3school.com.cn" id="w3s">W3School.com.cn</a>
+			</p>
+			<p>请把鼠标指针移动到链接上，或者点击该链接，来查看已经改变的 href 值和已经设置的 title 值。</p>
+			<button id="button5" type="button" class="mui-btn mui-btn-blue">显示旧/新文本</button>
+			<p></p>
+			<button id="button6" type="button" class="mui-btn mui-btn-blue">显示旧/新 HTML</button>
+			<p></p>
+			<button id="button7" type="button" class="mui-btn mui-btn-blue">改变 href 和 title 值</button>
+			<p></p>
+			<button id="button8" type="button" class="mui-btn mui-btn-blue">改变 href 值</button>
+			<p></p>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#button1").click(function() {
+					alert("Text: " + $("#test").text());
+				});
+				$("#button2").click(function() {
+					alert("Text: " + $("#test").html());
+				});
+				$("#button3").click(function() {
+					alert("Value: " + $("input").val());
+				});
+				$("#button4").click(function() {
+					alert($(".mui-content a").attr("href"));
+				});
+				$("#button5").click(function() {
+					$("#test1").text(function(i, origText) {
+						return "Old text: " + origText + " New text: Hello world!(index: " + i + ")";
+					});
+				});
+				$("#button6").click(function() {
+					$("#test2").html(function(i, origText) {
+						return "Old html: " + origText + " New html: Hello <b>world!</b>(index: " + i + ")";
+					});
+				});
+				$("#button7").click(function() {
+					$("#w3s").attr({
+						"href": "http://www.w3school.com.cn/jquery/",
+						"title": "W3School jQuery 教程"
+					});
+				});
+				$("#button8").click(function() {
+					$("#w3s").attr("href", function(i, origValue) {
+						return origValue + "/jquery";
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

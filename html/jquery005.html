@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery 停止动画</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
+		<style type="text/css">
+			#panel,
+			#flip {
+				padding: 5px;
+				text-align: center;
+				background-color: #e5eecc;
+				border: solid 1px #c3c3c3;
+			}
+			
+			#panel {
+				padding: 50px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">jQuery 停止动画</h1>
+		</header>
+
+		<div class="mui-content">
+			<p></p>
+			<button id="button1" type="button" class="mui-btn mui-btn-blue">停止滑动</button>
+			<p></p>
+			<div id="flip">点击这里，向下滑动面板</div>
+			<div id="panel">Hello world!</div>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#flip").click(function() {
+					$("#panel").slideDown(5000);
+				});
+				$("button").click(function() {
+					$("#panel").stop();
+				});
+			});
+		</script>
+	</body>
+
+</html>

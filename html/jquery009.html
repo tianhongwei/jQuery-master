@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery 遍历 - 祖先</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
+		<style>
+			.ancestors * {
+				display: block;
+				border: 2px solid lightgrey;
+				color: lightgrey;
+				padding: 5px;
+				margin: 15px;
+			}
+			
+			.descendants * {
+				display: block;
+				border: 2px solid lightgrey;
+				color: lightgrey;
+				padding: 5px;
+				margin: 15px;
+			}
+			
+			.siblings * {
+				display: block;
+				border: 2px solid lightgrey;
+				color: lightgrey;
+				padding: 5px;
+				margin: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">jQuery 遍历 - 祖先</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="ancestors">
+				<div style="width:200px;">div (曾祖父)
+					<ul>ul (祖父)
+						<li>li (直接父)
+							<span>span</span>
+						</li>
+					</ul>
+				</div>
+
+				<div style="width:200px;">div (祖父)
+					<p>p (直接父)
+						<span>span</span>
+					</p>
+				</div>
+			</div>
+			<p></p>
+			<button id="button1" type="button" class="mui-btn mui-btn-blue">遍历直接父元素</button>
+			<p></p>
+			<button id="button2" type="button" class="mui-btn mui-btn-blue">遍历所有祖先</button>
+			<p></p>
+			<button id="button3" type="button" class="mui-btn mui-btn-blue">遍历所有祖先，并且它是ul元素</button>
+			<p></p>
+			<button id="button4" type="button" class="mui-btn mui-btn-blue">遍历介于 span与div元素之间的所有祖先元素</button>
+			<p>jQuery 遍历 - 后代</p>
+			<div id="div" class="descendants" style="width:200px;">div (当前元素)
+				<p class="1">p (子)
+					<span>span (孙)</span>
+				</p>
+				<p class="2">p (child)
+					<span>span (孙)</span>
+				</p>
+			</div>
+			<button id="button5" type="button" class="mui-btn mui-btn-blue">遍历所有直接子元素</button>
+			<p></p>
+			<button id="button6" type="button" class="mui-btn mui-btn-blue">遍历类名为 "1" 的所有p元素，并且它们是div的直接子元素</button>
+			<p></p>
+			<button id="button7" type="button" class="mui-btn mui-btn-blue">遍历属于div后代的所有span元素</button>
+			<p></p>
+			<button id="button8" type="button" class="mui-btn mui-btn-blue">遍历返回div的所有后代</button>
+			<p>jQuery 遍历 - 同胞</p>
+			<div class="siblings">
+				<div>div (父)
+					<p>p</p>
+					<span>span</span>
+					<h2>h2</h2>
+					<h3>h3</h3>
+					<h4>h4</h4>
+					<h5>h5</h5>
+					<h6>h6</h6>
+					<p>p</p>
+				</div>
+			</div>
+			<button id="button9" type="button" class="mui-btn mui-btn-blue">h2的所有同胞元素</button>
+			<p></p>
+			<button id="button10" type="button" class="mui-btn mui-btn-blue">属于h2的同胞元素的所有p元素</button>
+			<p></p>
+			<button id="button11" type="button" class="mui-btn mui-btn-blue">h2的下一个同胞元素</button>
+			<p></p>
+			<button id="button12" type="button" class="mui-btn mui-btn-blue">返回h2的所有跟随的同胞元素</button>
+			<p></p>
+			<button id="button13" type="button" class="mui-btn mui-btn-blue">介于h2与h6元素之间的所有同胞元素</button>
+			<p></p>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#button1").click(function() {
+					$("span").parent().css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button2").click(function() {
+					$("span").parents().css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button3").click(function() {
+					$("span").parents("ul").css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button4").click(function() {
+					$("span").parentsUntil("div").css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button5").click(function() {
+					$("#div").children().css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button6").click(function() {
+					$("#div").children("p.1").css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button7").click(function() {
+					$("#div").find("span").css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button8").click(function() {
+					$("#div").find("*").css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button9").click(function() {
+					$("h2").siblings().css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button10").click(function() {
+					$("h2").siblings("p").css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button11").click(function() {
+					$("h2").next().css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button12").click(function() {
+					$("h2").nextAll().css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				$("#button13").click(function() {
+					$("h2").nextUntil("h6").css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>
